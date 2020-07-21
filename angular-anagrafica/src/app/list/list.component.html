@@ -1,0 +1,15 @@
+<br>
+<div class="table-wrapper">
+  <table class="table">
+    <tbody>
+      <tr *ngFor="let person of list ">
+        
+        <td style="width: 10%;"><button class="button small" title="delete person" (click)="delete(person)">x</button></td>
+        <td style="width: 60%;"><a routerLink="/details/{{person.idAnagrafica}}">{{person.nome}} {{person.cognome}}</a></td>
+        
+    </tr>
+    </tbody>
+    
+  </table>
+</div>
+

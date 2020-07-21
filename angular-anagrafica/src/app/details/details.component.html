@@ -1,0 +1,55 @@
+<div *ngIf="data">
+    <div class="container">
+        <br>
+        <form class="form-style-1" #dataForm="ngForm"
+                (ngSubmit)="updateData()">
+            <h2>Dettagli per {{data.nome}} {{data.cognome}}</h2>
+            <div>
+                <label for="nome">Nome</label>
+                <input type="text" id="nome" required
+                [(ngModel)]="data.nome" name="nome">        
+            </div>
+    
+            <div>
+                <label for="cognome">Cognome</label>
+                <input type="text" id="cognome" required
+                [(ngModel)]="data.cognome" name="cognome">
+            </div>
+    
+            <div>
+                <label for="provincia">Provincia</label>
+                <select [(ngModel)]="data.idProvincia" name="provincia" id="provincia"
+                        (change)="getComuni($event.target.value)"
+                        required>
+                    <option *ngFor= "let provincia of province" [value]="provincia.idProvincia">{{provincia.nome}}</option>
+                </select>
+            </div>
+            
+            <div>
+                <label for="comune">Comune</label>
+                <select [(ngModel)]="data.idComune" name="comune" id="comune"
+                        required>
+                    <option *ngFor= "let comune of comuni" [value]="comune.idComune">{{comune.nome}}</option>
+                </select> 
+            </div>
+    
+            <div>
+                <span>
+                    <label for="indirizzo">Indirizzo</label>
+                    <input type="text" id="indirizzo" required
+                    [(ngModel)]="data.indirizzo" name="indirizzo">
+                </span>
+                
+                <span>
+                    <label for="numCivico">Numero Civico</label>
+                    <input type="text" id="numCivico" required
+                    [(ngModel)]="data.numCivico" name="numCivico">
+                </span>
+            </div>
+            <br>
+            <button type="submit" [disabled]="!dataForm.form.valid" class="button small">Aggiorna dati</button>
+            
+            
+        </form>
+    </div>
+</div>
